@@ -1,0 +1,41 @@
+# Environment files (never commit API keys)
+.env
+backend/.env
+frontend/.env
+*.env.local
+
+# Python virtual environments & caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/.venv/
+backend/venv/
+backend/.python/
+.venv/
+venv/
+ENV/
+.pytest_cache/
+
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Frontend dependencies & build artifacts
+frontend/node_modules/
+node_modules/
+frontend/dist/
+dist/
+*.log
+npm-debug.log*
+
+# OS / IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
