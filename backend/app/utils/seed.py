@@ -11,6 +11,7 @@ from app.database import Base, SessionLocal, engine
 import app.models  # noqa: F401 - register models on Base.metadata
 from app.models.product import Product
 from app.models.stock_transaction import StockTransaction
+from app.models.system_status import SystemStatus
 from app.models.user import User
 from app.utils.config import settings
 from app.utils.security import hash_password
@@ -119,6 +120,18 @@ def seed_initial_data(db: Session) -> None:
             db.add(tx)
 
         logger.info("Seeded %d hackathon sample products.", len(SAMPLE_PRODUCTS))
+
+    status_row = db.query(SystemStatus).filter(SystemStatus.id == 1).first()
+    if not status_row:
+        db.add(
+            SystemStatus(
+                id=1,
+                maintenance=False,
+                blocking=False,
+                message="Scheduled system maintenance is currently in progress. Normal service will resume shortly.",
+                estimated_time="15 minutes",
+            )
+        )
 
     db.commit()
 

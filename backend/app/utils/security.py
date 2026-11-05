@@ -129,3 +129,13 @@ def get_current_user(
             detail="User account not found or inactive.",
         )
     return user
+
+
+def require_admin_user(current_user: User = Depends(get_current_user)) -> User:
+    """FastAPI dependency restricting access to authorized administrators ('owner' or 'admin')."""
+    if (current_user.role or "").lower() not in ("owner", "admin"):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Administrator privileges are required for this operation.",
+        )
+    return current_user

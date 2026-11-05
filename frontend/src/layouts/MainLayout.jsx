@@ -18,18 +18,27 @@ import {
   Minimize2,
   PanelLeftClose,
   PanelLeftOpen,
+  ShieldAlert,
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { useConfig } from "../context/ConfigContext";
+import { useSystemStatus } from "../hooks/useSystemStatus";
+import MaintenanceBanner from "../components/MaintenanceBanner";
 
-const NAV_ITEMS = [
+const BASE_NAV_ITEMS = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard, end: true },
-  { to: "/pos", label: "POS / Billing", icon: ShoppingCart },
-  { to: "/products", label: "Products", icon: Package },
-  { to: "/inventory", label: "Inventory", icon: Boxes },
+  { to: "/pos", label: "POS / Billing", icon: ShoppingCart, featureKey: "posBilling" },
+  { to: "/products", label: "Products", icon: Package, featureKey: "productManagement" },
+  { to: "/inventory", label: "Inventory", icon: Boxes, featureKey: "inventoryAdjustments" },
   { to: "/sales", label: "Sales History", icon: History },
-  { to: "/reports", label: "Reports", icon: BarChart3 },
-  { to: "/voice", label: "Voice Assistant", icon: Mic, highlight: true },
+  { to: "/reports", label: "Reports", icon: BarChart3, featureKey: "reportsAnalytics" },
+  {
+    to: "/voice",
+    label: "Voice Assistant",
+    icon: Mic,
+    highlight: true,
+    featureKey: "voiceAssistant",
+  },
   { to: "/settings", label: "Settings", icon: Settings },
 ];
 
@@ -44,6 +53,7 @@ const MOBILE_BOTTOM_TABS = [
 export default function MainLayout() {
   const { user, logout } = useAuth();
   const { config, ttsEnabled, setTtsEnabled } = useConfig();
+  const { features } = useSystemStatus();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -51,6 +61,14 @@ export default function MainLayout() {
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  const isAdmin = ["owner", "admin"].includes((user?.role || "").toLowerCase());
+  const navItems = isAdmin
+    ? [
+        ...BASE_NAV_ITEMS,
+        { to: "/admin", label: "Admin Controls", icon: ShieldAlert },
+      ]
+    : BASE_NAV_ITEMS;
 
   useEffect(() => {
     const onFullscreenChange = () => {
@@ -78,9 +96,9 @@ export default function MainLayout() {
   };
 
   const activeNav =
-    NAV_ITEMS.find((item) =>
+    navItems.find((item) =>
       item.end ? location.pathname === "/" : location.pathname.startsWith(item.to)
-    ) || NAV_ITEMS[0];
+    ) || navItems[0];
 
   return (
     <div className="h-screen w-full overflow-hidden bg-slate-100 flex flex-col lg:flex-row">
@@ -111,8 +129,10 @@ export default function MainLayout() {
 
         {/* Navigation Links */}
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-          {NAV_ITEMS.map((item) => {
+          {navItems.map((item) => {
             const Icon = item.icon;
+            const featureOff =
+              item.featureKey && features && features[item.featureKey] === false;
             return (
               <NavLink
                 key={item.to}
@@ -121,7 +141,9 @@ export default function MainLayout() {
                 title={sidebarCollapsed ? item.label : undefined}
                 className={({ isActive }) =>
                   `flex items-center ${
-                    sidebarCollapsed ? "justify-center px-2" : "px-3.5 gap-3"
+                    sidebarCollapsed
+                      ? "justify-center px-2"
+                      : "justify-between px-3.5 gap-3"
                   } py-2.5 rounded-xl text-sm font-semibold transition ${
                     isActive
                       ? "bg-indigo-600 text-white shadow-sm"
@@ -131,8 +153,15 @@ export default function MainLayout() {
                   }`
                 }
               >
-                <Icon className="w-5 h-5 shrink-0" />
-                {!sidebarCollapsed && <span className="truncate">{item.label}</span>}
+                <span className="flex items-center gap-3 min-w-0">
+                  <Icon className="w-5 h-5 shrink-0" />
+                  {!sidebarCollapsed && <span className="truncate">{item.label}</span>}
+                </span>
+                {!sidebarCollapsed && featureOff && (
+                  <span className="px-1.5 py-0.5 rounded bg-rose-500/25 text-rose-200 text-[10px] font-extrabold shrink-0">
+                    OFF
+                  </span>
+                )}
               </NavLink>
             );
           })}
@@ -142,9 +171,11 @@ export default function MainLayout() {
         <div className="p-3 border-t border-slate-800 bg-slate-950/50 space-y-2.5 shrink-0">
           {!sidebarCollapsed && (
             <div className="flex items-center justify-between px-1 text-xs">
-              <span className="text-slate-400 font-medium">Gemini AI</span>
+              <span className="text-slate-400 font-medium truncate">
+                Ollama ({config.ollama_model || "qwen2.5:3b"})
+              </span>
               <span
-                className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-semibold ${
+                className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-semibold shrink-0 ${
                   config.ai_configured
                     ? "bg-emerald-500/20 text-emerald-300"
                     : "bg-amber-500/20 text-amber-300"
@@ -155,7 +186,11 @@ export default function MainLayout() {
                     config.ai_configured ? "bg-emerald-400" : "bg-amber-400"
                   }`}
                 />
-                {config.ai_configured ? "Connected" : "Key Needed"}
+                {config.ai_configured
+                  ? "Local Ready"
+                  : config.ollama_connected
+                  ? "Pull Model"
+                  : "Offline"}
               </span>
             </div>
           )}
@@ -304,8 +339,10 @@ export default function MainLayout() {
                 </button>
               </div>
               <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
-                {NAV_ITEMS.map((item) => {
+                {navItems.map((item) => {
                   const Icon = item.icon;
+                  const featureOff =
+                    item.featureKey && features && features[item.featureKey] === false;
                   return (
                     <NavLink
                       key={item.to}
@@ -313,15 +350,22 @@ export default function MainLayout() {
                       end={item.end}
                       onClick={() => setMobileMenuOpen(false)}
                       className={({ isActive }) =>
-                        `flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold ${
+                        `flex items-center justify-between gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold ${
                           isActive
                             ? "bg-indigo-600 text-white"
                             : "text-slate-300 hover:bg-slate-800"
                         }`
                       }
                     >
-                      <Icon className="w-5 h-5" />
-                      <span>{item.label}</span>
+                      <span className="flex items-center gap-3 min-w-0">
+                        <Icon className="w-5 h-5 shrink-0" />
+                        <span className="truncate">{item.label}</span>
+                      </span>
+                      {featureOff && (
+                        <span className="px-1.5 py-0.5 rounded bg-rose-500/25 text-rose-200 text-[10px] font-extrabold shrink-0">
+                          OFF
+                        </span>
+                      )}
                     </NavLink>
                   );
                 })}
@@ -343,6 +387,9 @@ export default function MainLayout() {
             </div>
           </div>
         )}
+
+        {/* Real-Time System Maintenance Banner (No Page Refresh Required) */}
+        <MaintenanceBanner />
 
         {/* Scrollable Full-Screen Page Canvas */}
         <main className="flex-1 overflow-y-auto p-4 sm:p-6 pb-24 lg:pb-6 w-full">

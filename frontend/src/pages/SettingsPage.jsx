@@ -7,6 +7,7 @@ import {
   RefreshCw,
   CheckCircle2,
   AlertTriangle,
+  Cpu,
 } from "lucide-react";
 import { useConfig } from "../context/ConfigContext";
 import { useAuth } from "../context/AuthContext";
@@ -41,16 +42,17 @@ export default function SettingsPage() {
   });
 
   const sym = config.currency_symbol || "Rs.";
+  const hw = config.hardware;
 
   const handleTestVoice = () => {
-    speak("Hello! Voice POS audio synthesis is ready.", "en");
+    speak("Local Ollama Voice POS audio synthesis is ready.", "en");
   };
 
   return (
     <div className="space-y-6 w-full">
       <div className="flex items-center justify-between">
         <p className="text-sm text-slate-600">
-          Configure speech recognition, voice synthesis, and inspect backend environment settings.
+          Configure local speech recognition, audio synthesis, and monitor local Ollama + GPU/RAM resources.
         </p>
         <button
           type="button"
@@ -58,7 +60,7 @@ export default function SettingsPage() {
           className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 bg-white text-xs font-bold text-slate-700 hover:bg-slate-100"
         >
           <RefreshCw className="w-4 h-4" />
-          Reload Config
+          Refresh Status
         </button>
       </div>
 
@@ -162,81 +164,103 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        {/* Backend Public Environment Configuration */}
+        {/* Local Ollama AI + Hardware Monitor */}
         <div className="space-y-6">
           <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
             <div className="flex items-center gap-2.5">
-              <Server className="w-5 h-5 text-indigo-600" />
+              <Cpu className="w-5 h-5 text-indigo-600" />
               <h3 className="text-base font-bold text-slate-900">
-                Backend Environment Configuration
+                Local AI Engine (Ollama + Qwen 2.5 3B)
               </h3>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
               <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                <span className="text-xs text-slate-500 block">Currency (CURRENCY)</span>
+                <span className="text-xs text-slate-500 block">AI Provider (AI_PROVIDER)</span>
+                <strong className="text-slate-900 uppercase">
+                  {config.ai_provider || "ollama"} (100% Local)
+                </strong>
+              </div>
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <span className="text-xs text-slate-500 block">Local Model (OLLAMA_MODEL)</span>
+                <strong className="text-slate-900 font-mono text-xs">
+                  {config.ollama_model || "qwen2.5:3b"}
+                </strong>
+              </div>
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <span className="text-xs text-slate-500 block">Endpoint (OLLAMA_BASE_URL)</span>
+                <strong className="text-slate-900 font-mono text-xs">
+                  {config.ollama_base_url || "http://127.0.0.1:11434"}
+                </strong>
+              </div>
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <span className="text-xs text-slate-500 block">Ollama & Model Status</span>
+                {config.ai_configured ? (
+                  <span className="inline-flex items-center gap-1 font-bold text-emerald-700 text-xs mt-0.5">
+                    <CheckCircle2 className="w-4 h-4" /> Local Model Ready
+                  </span>
+                ) : !config.ollama_connected ? (
+                  <span className="inline-flex items-center gap-1 font-bold text-amber-700 text-xs mt-0.5">
+                    <AlertTriangle className="w-4 h-4" /> Start Ollama ({config.ollama_base_url})
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1 font-bold text-amber-700 text-xs mt-0.5">
+                    <AlertTriangle className="w-4 h-4" /> Run: ollama pull {config.ollama_model}
+                  </span>
+                )}
+              </div>
+
+              {hw && (
+                <>
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                    <span className="text-xs text-slate-500 block">GPU / Acceleration</span>
+                    <strong className="text-slate-900 text-xs">
+                      {hw.gpu_name
+                        ? `${hw.gpu_name} (${hw.vram_used_mb} / ${hw.vram_total_mb} MB VRAM)`
+                        : hw.acceleration}
+                    </strong>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                    <span className="text-xs text-slate-500 block">System RAM Usage</span>
+                    <strong className="text-slate-900 text-xs">
+                      {hw.ram_total_gb
+                        ? `${hw.ram_used_gb} / ${hw.ram_total_gb} GB (${hw.ram_percent}%)`
+                        : "Auto"}
+                    </strong>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+            <div className="flex items-center gap-2.5">
+              <Server className="w-5 h-5 text-indigo-600" />
+              <h3 className="text-base font-bold text-slate-900">
+                POS Thresholds & Signed-In User
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span className="text-xs text-slate-500 block">Currency</span>
                 <strong className="text-slate-900">
                   {config.currency} ({sym})
                 </strong>
               </div>
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                <span className="text-xs text-slate-500 block">Default Language (LANGUAGE)</span>
-                <strong className="text-slate-900">{config.language}</strong>
-              </div>
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                <span className="text-xs text-slate-500 block">
-                  Low-Stock Default (LOW_STOCK_DEFAULT)
-                </span>
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span className="text-xs text-slate-500 block">Low-Stock Default</span>
                 <strong className="text-slate-900">{config.low_stock_default}</strong>
               </div>
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                <span className="text-xs text-slate-500 block">
-                  High-Value Alert (BIG_AMOUNT)
-                </span>
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span className="text-xs text-slate-500 block">High-Value Alert</span>
                 <strong className="text-slate-900">
                   {formatCurrency(config.big_amount, sym)}
                 </strong>
               </div>
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                <span className="text-xs text-slate-500 block">
-                  Gemini Model (GEMINI_MODEL)
-                </span>
-                <strong className="text-slate-900 font-mono text-xs">
-                  {config.gemini_model}
-                </strong>
-              </div>
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                <span className="text-xs text-slate-500 block">Gemini API Key Status</span>
-                {config.ai_configured ? (
-                  <span className="inline-flex items-center gap-1 font-bold text-emerald-700 text-xs mt-0.5">
-                    <CheckCircle2 className="w-4 h-4" /> Connected
-                  </span>
-                ) : (
-                  <span className="inline-flex items-center gap-1 font-bold text-amber-700 text-xs mt-0.5">
-                    <AlertTriangle className="w-4 h-4" /> Set GEMINI_API_KEY in backend/.env
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
-            <div className="flex items-center gap-2.5 mb-3">
-              <User className="w-5 h-5 text-indigo-600" />
-              <h3 className="text-base font-bold text-slate-900">Signed-In User</h3>
-            </div>
-            <div className="grid grid-cols-3 gap-3 text-sm text-slate-700">
-              <div>
-                <span className="text-xs text-slate-500 block">Full Name</span>
-                <strong>{user?.full_name}</strong>
-              </div>
-              <div>
-                <span className="text-xs text-slate-500 block">Username</span>
-                <strong>{user?.username}</strong>
-              </div>
-              <div>
-                <span className="text-xs text-slate-500 block">Role</span>
-                <strong className="capitalize">{user?.role}</strong>
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span className="text-xs text-slate-500 block">User</span>
+                <strong className="text-slate-900">{user?.username}</strong>
               </div>
             </div>
           </div>

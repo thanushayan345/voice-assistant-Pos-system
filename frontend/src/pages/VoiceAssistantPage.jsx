@@ -12,6 +12,7 @@ import {
   Sparkles,
   Receipt,
   History,
+  Cpu,
 } from "lucide-react";
 import { api } from "../services/api";
 import { useConfig } from "../context/ConfigContext";
@@ -75,6 +76,7 @@ export default function VoiceAssistantPage() {
   const [receiptSale, setReceiptSale] = useState(null);
 
   const sym = config.currency_symbol || "Rs.";
+  const modelLabel = config.ollama_model || "qwen2.5:3b";
 
   const {
     isSupported: ttsSupported,
@@ -121,7 +123,7 @@ export default function VoiceAssistantPage() {
         }
         loadHistory();
       } catch (err) {
-        setErrorMsg(err.message || "Failed to process voice command.");
+        setErrorMsg(err.message || "Failed to process command with local Ollama AI.");
       } finally {
         setProcessing(false);
       }
@@ -134,6 +136,10 @@ export default function VoiceAssistantPage() {
     isListening,
     interimTranscript,
     speechError,
+    audioLevel,
+    audioDevices,
+    selectedDeviceId,
+    setSelectedDeviceId,
     startListening,
     stopListening,
   } = useSpeechRecognition({
@@ -194,14 +200,36 @@ export default function VoiceAssistantPage() {
       {!config.ai_configured && (
         <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+            <Cpu className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
             <div className="text-sm text-amber-900">
-              <p className="font-bold">Gemini API Key Required</p>
-              <p className="text-xs text-amber-800 mt-0.5">
-                Add <code className="px-1.5 py-0.5 rounded bg-amber-100 font-mono">GEMINI_API_KEY</code> in{" "}
-                <code className="px-1.5 py-0.5 rounded bg-amber-100 font-mono">backend/.env</code>, save the file, and click{" "}
-                <strong>Re-check Key</strong>.
-              </p>
+              {!config.ollama_connected ? (
+                <>
+                  <p className="font-bold">
+                    Local Ollama Server Offline ({config.ollama_base_url || "http://127.0.0.1:11434"})
+                  </p>
+                  <p className="text-xs text-amber-800 mt-0.5">
+                    Start the Ollama desktop app or run{" "}
+                    <code className="px-1.5 py-0.5 rounded bg-amber-100 font-mono">
+                      ollama run {modelLabel}
+                    </code>{" "}
+                    in PowerShell, then click <strong>Re-check Ollama</strong>. Manual POS remains active.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="font-bold">
+                    Local Model &lsquo;{modelLabel}&rsquo; Not Pulled Yet
+                  </p>
+                  <p className="text-xs text-amber-800 mt-0.5">
+                    Run{" "}
+                    <code className="px-1.5 py-0.5 rounded bg-amber-100 font-mono">
+                      ollama pull {modelLabel}
+                    </code>{" "}
+                    in PowerShell to download the quantized model locally, then click{" "}
+                    <strong>Re-check Ollama</strong>.
+                  </p>
+                </>
+              )}
             </div>
           </div>
           <button
@@ -209,7 +237,7 @@ export default function VoiceAssistantPage() {
             onClick={refreshConfig}
             className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shrink-0 self-start sm:self-center"
           >
-            Re-check Key
+            Re-check Ollama
           </button>
         </div>
       )}
@@ -222,15 +250,36 @@ export default function VoiceAssistantPage() {
           <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-5">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
               <div>
-                <h3 className="text-lg font-extrabold text-slate-900">
-                  AI Voice Command Console
-                </h3>
-                <p className="text-xs text-slate-500">
-                  Speak or type commands to check stock, add inventory, or record sales.
+                <div className="flex items-center gap-2">
+                  <h3 className="text-lg font-extrabold text-slate-900">
+                    Local AI Voice Console
+                  </h3>
+                  <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 border border-indigo-200 text-[11px] font-bold text-indigo-700 font-mono">
+                    {modelLabel}
+                  </span>
+                </div>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  100% local inference via Ollama ({config.hardware?.acceleration || "RTX GPU / CPU"}).
                 </p>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                {audioDevices.length > 0 && (
+                  <select
+                    value={selectedDeviceId}
+                    onChange={(e) => setSelectedDeviceId(e.target.value)}
+                    title="Select Microphone Input Device"
+                    className="max-w-[200px] truncate px-3 py-2 rounded-xl border border-slate-300 bg-slate-50 text-xs font-bold text-slate-700"
+                  >
+                    <option value="">Default Microphone</option>
+                    {audioDevices.map((mic) => (
+                      <option key={mic.deviceId} value={mic.deviceId}>
+                        {mic.label}
+                      </option>
+                    ))}
+                  </select>
+                )}
+
                 <select
                   value={voiceLanguage}
                   onChange={(e) => setVoiceLanguage(e.target.value)}
@@ -322,13 +371,37 @@ export default function VoiceAssistantPage() {
                 <div>
                   <p className="text-sm font-bold text-slate-900">
                     {isListening
-                      ? "Listening now... Speak clearly into your microphone"
+                      ? "Listening... Speak clearly, then pause 1.5s (or click Stop)"
                       : processing
-                      ? "Processing command with Google Gemini AI..."
+                      ? `Running local inference on Ollama (${modelLabel})...`
                       : sttSupported
                       ? `Ready for voice input (${voiceLanguage})`
                       : "Browser SpeechRecognition unavailable — type command below"}
                   </p>
+
+                  {isListening && (
+                    <div className="mt-2.5 space-y-1">
+                      <div className="flex items-center justify-between text-[11px] font-bold text-slate-600">
+                        <span>Live Mic Input Level</span>
+                        <span
+                          className={
+                            audioLevel >= 7 ? "text-emerald-600" : "text-slate-400"
+                          }
+                        >
+                          {audioLevel}%
+                        </span>
+                      </div>
+                      <div className="h-2.5 w-full rounded-full bg-slate-100 overflow-hidden border border-slate-200">
+                        <div
+                          className={`h-full transition-all duration-75 rounded-full ${
+                            audioLevel >= 7 ? "bg-emerald-500" : "bg-indigo-400"
+                          }`}
+                          style={{ width: `${Math.max(4, audioLevel)}%` }}
+                        />
+                      </div>
+                    </div>
+                  )}
+
                   {interimTranscript && (
                     <p className="mt-1.5 px-3.5 py-2 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 text-sm font-semibold">
                       &ldquo;{interimTranscript}&rdquo;
@@ -348,7 +421,7 @@ export default function VoiceAssistantPage() {
                     value={manualText}
                     onChange={(e) => setManualText(e.target.value)}
                     disabled={processing}
-                    placeholder="Or type a command (e.g., How much rice is available?)"
+                    placeholder="Or type a Tamil / English command (e.g., How much rice is available?)"
                     className="flex-1 px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
                   <button
@@ -369,7 +442,7 @@ export default function VoiceAssistantPage() {
             <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-sm font-medium flex items-start gap-3">
               <AlertTriangle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
               <div className="min-w-0">
-                <p className="font-bold">Voice Command Error</p>
+                <p className="font-bold">Local AI Command Error</p>
                 <p className="mt-0.5 break-words">{errorMsg}</p>
               </div>
             </div>
@@ -421,7 +494,10 @@ export default function VoiceAssistantPage() {
               </div>
 
               <p className="text-xs text-slate-500">
-                Command: <span className="font-semibold text-slate-800">&ldquo;{activeResponse.transcript}&rdquo;</span>
+                Command:{" "}
+                <span className="font-semibold text-slate-800">
+                  &ldquo;{activeResponse.transcript}&rdquo;
+                </span>
               </p>
 
               <p className="text-lg font-extrabold text-slate-900 leading-snug mt-2">
@@ -573,7 +649,7 @@ export default function VoiceAssistantPage() {
                 Quick Voice Commands
               </h3>
               <p className="text-xs text-slate-500">
-                Click any command below to test live AI processing
+                Click any command below to test local Qwen 2.5 3B processing
               </p>
             </div>
           </div>

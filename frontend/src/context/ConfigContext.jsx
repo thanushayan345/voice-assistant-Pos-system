@@ -9,18 +9,25 @@ const PREFERRED_VOICE_URI_KEY = "vpos_preferred_voice_uri";
 
 const FALLBACK_CONFIG = {
   app_name: "Voice POS",
+  ai_provider: "ollama",
+  ollama_base_url: "http://127.0.0.1:11434",
+  ollama_model: "qwen2.5:3b",
+  ollama_timeout: 60,
+  ollama_connected: false,
+  ollama_model_ready: false,
+  ai_configured: false,
+  hardware: null,
   currency: "LKR",
   currency_symbol: "Rs.",
   language: "en-US",
   supported_languages: [
     { code: "en-US", label: "English (US)" },
-    { code: "en-GB", label: "English (UK)" },
     { code: "en-IN", label: "English (South Asia)" },
+    { code: "ta-LK", label: "Tamil Voice Input (ta-LK)" },
+    { code: "ta-IN", label: "Tamil Voice Input (ta-IN)" },
   ],
   low_stock_default: 5,
   big_amount: 50000,
-  gemini_model: "gemini-3.8-flash",
-  ai_configured: false,
   supported_units: [
     "Pieces",
     "Kilograms",

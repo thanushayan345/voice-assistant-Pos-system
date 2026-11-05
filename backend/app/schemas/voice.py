@@ -1,13 +1,11 @@
-"""Voice AI command processing and confirmation Pydantic schemas."""
+"""Voice AI command processing and confirmation Pydantic schemas (Local Ollama + Qwen 2.5 3B)."""
 
 from __future__ import annotations
 
 from datetime import datetime
-from decimal import Decimal
 from typing import Any, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, Field, field_validator
-
 
 SUPPORTED_INTENTS = (
     "CHECK_STOCK",
@@ -38,8 +36,8 @@ IntentType = Literal[
 ]
 
 
-class GeminiStructuredIntent(BaseModel):
-    """Schema enforced on Gemini structured JSON output."""
+class AIStructuredIntent(BaseModel):
+    """Strict Pydantic schema enforced on local Ollama (qwen2.5:3b) structured JSON output."""
 
     intent: IntentType = "UNKNOWN"
     product_name: Optional[str] = None
@@ -52,7 +50,7 @@ class GeminiStructuredIntent(BaseModel):
     report_period: Optional[str] = None
     is_ambiguous: bool = False
     ambiguous_candidates: List[str] = Field(default_factory=list)
-    confidence: float = Field(default=0.0, ge=0.0, le=1.0)
+    confidence: float = Field(default=0.85, ge=0.0, le=1.0)
     response_language: Literal["ta", "en"] = "en"
 
 

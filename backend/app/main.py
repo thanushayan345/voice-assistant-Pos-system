@@ -5,13 +5,14 @@ from __future__ import annotations
 import logging
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Request, status
+from fastapi import Depends, FastAPI, Request, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from sqlalchemy.exc import SQLAlchemyError
 
-from app.routers import auth, config, inventory, products, reports, sales, voice
+from app.routers import auth, config, inventory, products, reports, sales, system, voice
+from app.routers.system import make_maintenance_guard
 from app.utils.config import settings, validate_startup_configuration
 from app.utils.seed import init_db
 
@@ -69,13 +70,38 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     )
 
 
+# Authentication, System Maintenance Admin API, and Public Config remain accessible during maintenance
 app.include_router(auth.router)
-app.include_router(products.router)
-app.include_router(inventory.router)
-app.include_router(sales.router)
-app.include_router(voice.router)
-app.include_router(reports.router)
+app.include_router(system.router)
 app.include_router(config.router)
+
+# Protected POS & AI Routers independently enforce HTTP 503 during blocking maintenance / disabled features
+app.include_router(
+    products.router,
+    dependencies=[
+        Depends(make_maintenance_guard("productManagement", mutating_only_feature=True))
+    ],
+)
+app.include_router(
+    inventory.router,
+    dependencies=[
+        Depends(make_maintenance_guard("inventoryAdjustments", mutating_only_feature=True))
+    ],
+)
+app.include_router(
+    sales.router,
+    dependencies=[
+        Depends(make_maintenance_guard("posBilling", mutating_only_feature=True))
+    ],
+)
+app.include_router(
+    voice.router,
+    dependencies=[Depends(make_maintenance_guard("voiceAssistant"))],
+)
+app.include_router(
+    reports.router,
+    dependencies=[Depends(make_maintenance_guard("reportsAnalytics"))],
+)
 
 
 @app.get("/api/health", tags=["Health"])
@@ -84,5 +110,6 @@ def health_check():
         "status": "healthy",
         "service": "Tamil Voice POS API",
         "currency": settings.CURRENCY,
-        "ai_configured": settings.ai_configured,
+        "ai_provider": settings.AI_PROVIDER,
+        "ollama_model": settings.OLLAMA_MODEL,
     }

@@ -1,4 +1,4 @@
-"""Environment-backed configuration loader and startup validator."""
+"""Environment-backed configuration loader and startup validator for Local Ollama AI."""
 
 from __future__ import annotations
 
@@ -7,6 +7,7 @@ import os
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import List
+from urllib.parse import urlparse
 
 from dotenv import dotenv_values, load_dotenv
 from pydantic import BaseModel, Field, field_validator
@@ -29,14 +30,6 @@ CURRENCY_SYMBOLS = {
     "GBP": "£",
 }
 
-PLACEHOLDER_KEYS = {
-    "",
-    "your_gemini_api_key",
-    "your_gemini_api_key_here",
-    "replace_me",
-    "changeme",
-}
-
 SUPPORTED_UNITS = [
     "Pieces",
     "Kilograms",
@@ -48,12 +41,17 @@ SUPPORTED_UNITS = [
     "Bags",
 ]
 
+LOCAL_HOSTS = {"127.0.0.1", "localhost", "::1"}
+
 
 class Settings(BaseModel):
     """Validated application settings loaded from environment variables."""
 
-    GEMINI_API_KEY: str = Field(default="")
-    GEMINI_MODEL: str = Field(default="gemini-3.8-flash", min_length=1)
+    AI_PROVIDER: str = Field(default="ollama")
+    OLLAMA_BASE_URL: str = Field(default="http://127.0.0.1:11434")
+    OLLAMA_MODEL: str = Field(default="qwen2.5:3b", min_length=1)
+    OLLAMA_TIMEOUT: int = Field(default=60, ge=5, le=300)
+
     CURRENCY: str = Field(default="LKR", min_length=2, max_length=10)
     LANGUAGE: str = Field(default="en-US", min_length=2, max_length=15)
     LOW_STOCK_DEFAULT: Decimal = Field(default=Decimal("5"))
@@ -65,8 +63,41 @@ class Settings(BaseModel):
     )
     JWT_ALGORITHM: str = Field(default="HS256")
     JWT_EXPIRE_MINUTES: int = Field(default=1440, ge=5)
-    DATABASE_URL: str = Field(default=f"sqlite:///{(BACKEND_DIR / 'tamil_voice_pos.db').as_posix()}")
+    DATABASE_URL: str = Field(
+        default=f"sqlite:///{(BACKEND_DIR / 'tamil_voice_pos.db').as_posix()}"
+    )
     CORS_ORIGINS: str = Field(default="http://localhost:5173,http://127.0.0.1:5173")
+
+    @field_validator("AI_PROVIDER")
+    @classmethod
+    def validate_ai_provider(cls, value: str) -> str:
+        cleaned = value.strip().lower()
+        if cleaned != "ollama":
+            raise ValueError(
+                "Only 'ollama' is permitted for AI_PROVIDER. External cloud LLM APIs are disabled."
+            )
+        return cleaned
+
+    @field_validator("OLLAMA_BASE_URL")
+    @classmethod
+    def validate_ollama_url(cls, value: str) -> str:
+        cleaned = value.strip().rstrip("/")
+        parsed = urlparse(cleaned)
+        if parsed.scheme not in ("http", "https") or not parsed.hostname:
+            raise ValueError("OLLAMA_BASE_URL must be a valid HTTP URL (e.g., http://127.0.0.1:11434).")
+        if parsed.hostname not in LOCAL_HOSTS:
+            raise ValueError(
+                "OLLAMA_BASE_URL must point to localhost / 127.0.0.1. Exposing or calling remote public endpoints is prohibited."
+            )
+        return cleaned
+
+    @field_validator("OLLAMA_MODEL")
+    @classmethod
+    def validate_ollama_model(cls, value: str) -> str:
+        cleaned = value.strip()
+        if not cleaned:
+            raise ValueError("OLLAMA_MODEL cannot be empty.")
+        return cleaned
 
     @field_validator("CURRENCY")
     @classmethod
@@ -111,11 +142,6 @@ class Settings(BaseModel):
         return CURRENCY_SYMBOLS.get(self.CURRENCY, self.CURRENCY)
 
     @property
-    def ai_configured(self) -> bool:
-        key = (self.GEMINI_API_KEY or "").strip()
-        return key.lower() not in PLACEHOLDER_KEYS and len(key) >= 10
-
-    @property
     def cors_origin_list(self) -> List[str]:
         origins = [o.strip() for o in self.CORS_ORIGINS.split(",") if o.strip()]
         return origins or ["http://localhost:5173", "http://127.0.0.1:5173"]
@@ -131,8 +157,10 @@ def load_settings() -> Settings:
         raw_db_url = f"sqlite:///{(BACKEND_DIR / rel_name).as_posix()}"
 
     return Settings(
-        GEMINI_API_KEY=os.getenv("GEMINI_API_KEY", ""),
-        GEMINI_MODEL=os.getenv("GEMINI_MODEL", "gemini-3.8-flash"),
+        AI_PROVIDER=os.getenv("AI_PROVIDER", "ollama"),
+        OLLAMA_BASE_URL=os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434"),
+        OLLAMA_MODEL=os.getenv("OLLAMA_MODEL", "qwen2.5:3b"),
+        OLLAMA_TIMEOUT=int(os.getenv("OLLAMA_TIMEOUT", "60")),
         CURRENCY=os.getenv("CURRENCY", "LKR"),
         LANGUAGE=os.getenv("LANGUAGE", "en-US"),
         LOW_STOCK_DEFAULT=os.getenv("LOW_STOCK_DEFAULT", "5"),
@@ -161,46 +189,28 @@ def _clean_env_val(val: object) -> str:
 
 
 def refresh_runtime_env() -> None:
-    """
-    Re-read .env files directly from disk so newly saved GEMINI_API_KEY / GEMINI_MODEL / LANGUAGE
-    take effect immediately without requiring a backend server restart.
-    """
-    candidate_files = [
-        BACKEND_DIR / ".env",
-        PROJECT_ROOT / ".env",
-        BACKEND_DIR / ".env.example",
-        PROJECT_ROOT / ".env.example",
-    ]
-
-    for env_path in candidate_files:
+    """Re-read .env files from disk so local Ollama settings updates apply immediately."""
+    for env_path in (BACKEND_DIR / ".env", PROJECT_ROOT / ".env"):
         if not env_path.exists():
             continue
         vals = dotenv_values(env_path)
-        candidate_key = _clean_env_val(vals.get("GEMINI_API_KEY"))
-        if candidate_key and candidate_key.lower() not in PLACEHOLDER_KEYS and len(candidate_key) >= 10:
-            if env_path.name.endswith(".example"):
-                logger.warning(
-                    "Detected GEMINI_API_KEY inside %s — please move your key to backend/.env so it stays git-ignored!",
-                    env_path.name,
-                )
-            settings.GEMINI_API_KEY = candidate_key
-            model_val = _clean_env_val(vals.get("GEMINI_MODEL"))
-            if model_val:
-                settings.GEMINI_MODEL = model_val
-            lang_val = _clean_env_val(vals.get("LANGUAGE"))
-            if lang_val:
-                settings.LANGUAGE = lang_val
-            return
-
-    # Also check OS environment if set
-    os_key = _clean_env_val(os.getenv("GEMINI_API_KEY"))
-    if os_key and os_key.lower() not in PLACEHOLDER_KEYS and len(os_key) >= 10:
-        settings.GEMINI_API_KEY = os_key
+        base_url = _clean_env_val(vals.get("OLLAMA_BASE_URL"))
+        if base_url:
+            settings.OLLAMA_BASE_URL = base_url.rstrip("/")
+        model_val = _clean_env_val(vals.get("OLLAMA_MODEL"))
+        if model_val:
+            settings.OLLAMA_MODEL = model_val
+        timeout_val = _clean_env_val(vals.get("OLLAMA_TIMEOUT"))
+        if timeout_val.isdigit():
+            settings.OLLAMA_TIMEOUT = int(timeout_val)
+        lang_val = _clean_env_val(vals.get("LANGUAGE"))
+        if lang_val:
+            settings.LANGUAGE = lang_val
+        break
 
 
 def validate_startup_configuration() -> None:
     """Validate required configuration at backend startup and log status."""
-    # Re-validate current settings instance
     _ = Settings.model_validate(settings.model_dump())
 
     if not ENV_FILE_PATH.exists():
@@ -209,18 +219,11 @@ def validate_startup_configuration() -> None:
             ENV_FILE_PATH,
         )
 
-    if not settings.ai_configured:
-        logger.warning(
-            "GEMINI_API_KEY is missing or set to placeholder in backend/.env. "
-            "Manual POS, Product Management, Inventory, and Reports are active; "
-            "Voice AI requests will return a clear configuration error until GEMINI_API_KEY is set."
-        )
-    else:
-        logger.info(
-            "Configuration validated: Model=%s, Currency=%s, Language=%s, LowStock=%s, BigAmount=%s",
-            settings.GEMINI_MODEL,
-            settings.CURRENCY,
-            settings.LANGUAGE,
-            settings.LOW_STOCK_DEFAULT,
-            settings.BIG_AMOUNT,
-        )
+    logger.info(
+        "Local AI Configuration validated: Provider=%s, Endpoint=%s, Model=%s, Timeout=%ss, Currency=%s",
+        settings.AI_PROVIDER,
+        settings.OLLAMA_BASE_URL,
+        settings.OLLAMA_MODEL,
+        settings.OLLAMA_TIMEOUT,
+        settings.CURRENCY,
+    )

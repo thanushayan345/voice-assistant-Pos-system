@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Mic, ShieldCheck, Sparkles, UserPlus, LogIn } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
+import MaintenanceBanner from "../components/MaintenanceBanner";
 
 export default function LoginPage() {
   const { login, register } = useAuth();
@@ -48,7 +49,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-slate-900 flex items-center justify-center p-4">
+    <div className="min-h-screen w-full bg-slate-900 flex flex-col">
+      <MaintenanceBanner />
+      <div className="flex-1 flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
         <div className="bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-7 text-white text-center">
           <div className="w-14 h-14 mx-auto rounded-2xl bg-white/15 flex items-center justify-center mb-3 shadow-inner">
@@ -212,6 +215,7 @@ export default function LoginPage() {
             </button>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

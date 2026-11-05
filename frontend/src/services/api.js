@@ -79,6 +79,15 @@ async function request(endpoint, options = {}) {
       code = detail.code || null;
     }
 
+    if (
+      response.status === 503 &&
+      detail &&
+      typeof detail === "object" &&
+      (detail.code === "MAINTENANCE_MODE" || detail.code === "FEATURE_DISABLED")
+    ) {
+      window.dispatchEvent(new CustomEvent("pos:system-status-changed"));
+    }
+
     throw new ApiError(message, response.status, code, detail);
   }
 
@@ -86,8 +95,14 @@ async function request(endpoint, options = {}) {
 }
 
 export const api = {
-  // Configuration
+  // Configuration & System Maintenance Status
   getConfig: () => request("/api/config"),
+  getSystemStatus: () => request("/api/system/status"),
+  updateSystemStatus: (payload) =>
+    request("/api/system/status", {
+      method: "PUT",
+      body: JSON.stringify(payload),
+    }),
 
   // Authentication
   register: (payload) =>
@@ -165,7 +180,7 @@ export const api = {
   },
   getSaleById: (id) => request(`/api/sales/${id}`),
 
-  // Voice AI
+  // Voice AI (Local Ollama)
   processVoice: (transcript, language) =>
     request("/api/voice/process", {
       method: "POST",

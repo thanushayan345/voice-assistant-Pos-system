@@ -20,13 +20,17 @@ from app.models.voice_command import VoiceCommand
 from app.schemas.product import ProductResponse
 from app.schemas.sale import SaleItemCreate
 from app.schemas.voice import (
+    AIStructuredIntent,
     VoiceCancelRequest,
     VoiceCommandResponse,
     VoiceConfirmRequest,
     VoiceHistoryItem,
     VoiceProcessRequest,
 )
-from app.services.gemini_service import GeminiServiceError, interpret_voice_command
+from app.services.ollama_service import (
+    OllamaServiceError,
+    interpret_voice_command,
+)
 from app.services.inventory_service import (
     adjust_stock,
     get_active_product_or_404,
@@ -132,8 +136,8 @@ def process_voice_command(
     current_user: User = Depends(get_current_user),
 ):
     """
-    Full 11-step AI Voice Processing Pipeline:
-    Receives recognized text -> Calls Gemini for structured JSON -> Validates against SQLite DB ->
+    Full 11-step Local AI Voice Processing Pipeline:
+    Receives recognized text -> Calls local Ollama (qwen2.5:3b) for structured JSON -> Validates against SQLite DB ->
     Executes read-only queries OR creates user-bound pending confirmation for stock/sale changes.
     """
     now_utc = datetime.now(timezone.utc)
@@ -184,7 +188,7 @@ def process_voice_command(
             catalog_products=catalog_products,
             hint_language=payload.language,
         )
-    except GeminiServiceError as exc:
+    except OllamaServiceError as exc:
         failed_cmd = VoiceCommand(
             user_id=current_user.id,
             transcript=payload.transcript,
@@ -201,6 +205,26 @@ def process_voice_command(
             detail={"code": exc.code, "message": exc.message},
         ) from exc
 
+    return _execute_interpreted_voice_intent(
+        db=db,
+        current_user=current_user,
+        transcript=payload.transcript,
+        language=payload.language,
+        ai_result=ai_result,
+        raw_json=raw_json,
+        now_utc=now_utc,
+    )
+
+
+def _execute_interpreted_voice_intent(
+    db: Session,
+    current_user: User,
+    transcript: str,
+    language: Optional[str],
+    ai_result: AIStructuredIntent,
+    raw_json: str,
+    now_utc: datetime,
+) -> VoiceCommandResponse:
     lang = "en"
     intent = ai_result.intent
     sym = settings.currency_symbol
@@ -622,8 +646,8 @@ def process_voice_command(
     voice_cmd = VoiceCommand(
         confirmation_token=confirmation_token,
         user_id=current_user.id,
-        transcript=payload.transcript,
-        language=payload.language or settings.LANGUAGE,
+        transcript=transcript,
+        language=language or settings.LANGUAGE,
         intent=intent,
         ai_raw_response=raw_json,
         validated_payload=json.dumps(validated_payload) if validated_payload else None,
