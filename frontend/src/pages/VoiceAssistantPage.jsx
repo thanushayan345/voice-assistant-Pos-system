@@ -9,7 +9,6 @@ import {
   CheckCircle2,
   XCircle,
   AlertTriangle,
-  Sparkles,
   Receipt,
   History,
   Cpu,
@@ -24,37 +23,6 @@ import {
   formatDateTime,
   formatQuantity,
 } from "../utils/formatters";
-
-const DEMO_COMMANDS = [
-  {
-    category: "Check Stock",
-    prompt: "How much rice is available?",
-  },
-  {
-    category: "Add Stock",
-    prompt: "Add 20 bags of rice",
-  },
-  {
-    category: "Record Sale",
-    prompt: "Sell 2 kilograms of sugar",
-  },
-  {
-    category: "Check Price",
-    prompt: "What is the price of soap?",
-  },
-  {
-    category: "Low Stock Alert",
-    prompt: "Show low-stock products",
-  },
-  {
-    category: "Today's Sales",
-    prompt: "What are today's sales?",
-  },
-  {
-    category: "Search Product",
-    prompt: "Do we have milk in stock?",
-  },
-];
 
 export default function VoiceAssistantPage() {
   const {
@@ -242,11 +210,9 @@ export default function VoiceAssistantPage() {
         </div>
       )}
 
-      {/* Full-Screen 2-Column Workspace */}
-      <div className="grid grid-cols-1 xl:grid-cols-12 gap-5 items-start">
-        {/* Left 7 Cols: Voice Control Studio + Live Result */}
-        <div className="xl:col-span-7 space-y-5">
-          {/* Sleek Voice Control Card */}
+      {/* Full-Width Voice Workspace */}
+      <div className="w-full space-y-5">
+        {/* Sleek Voice Control Card */}
           <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-5">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
               <div>
@@ -638,46 +604,6 @@ export default function VoiceAssistantPage() {
               </div>
             )}
           </div>
-        </div>
-
-        {/* Right 5 Cols: Quick Sample Voice Commands */}
-        <div className="xl:col-span-5 bg-white rounded-2xl border border-slate-200 p-5 shadow-xs">
-          <div className="flex items-center gap-2 mb-4">
-            <Sparkles className="w-5 h-5 text-indigo-600" />
-            <div>
-              <h3 className="text-base font-bold text-slate-900">
-                Quick Voice Commands
-              </h3>
-              <p className="text-xs text-slate-500">
-                Click any command below to test local Qwen 2.5 3B processing
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 gap-2.5">
-            {DEMO_COMMANDS.map((cmd) => (
-              <button
-                key={cmd.category}
-                type="button"
-                disabled={processing}
-                onClick={() => submitCommandText(cmd.prompt, "en-US")}
-                className="w-full text-left p-3.5 rounded-xl border border-slate-200 bg-slate-50/70 hover:bg-indigo-50 hover:border-indigo-300 transition flex items-center justify-between gap-3 group disabled:opacity-50"
-              >
-                <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 block">
-                    {cmd.category}
-                  </span>
-                  <span className="text-sm font-bold text-slate-900">
-                    &ldquo;{cmd.prompt}&rdquo;
-                  </span>
-                </div>
-                <span className="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-xs font-bold text-slate-600 group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-600 transition shrink-0">
-                  Run
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
 
       <ReceiptModal sale={receiptSale} onClose={() => setReceiptSale(null)} />
