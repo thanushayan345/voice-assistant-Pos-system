@@ -1,0 +1,550 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Pages /Kids [6 0 R 8 0 R 10 0 R 12 0 R 14 0 R] /Count 5 >>
+endobj
+5 0 obj
+<< /Length 12013 >>
+stream
+q 0.070 0.090 0.260 rg 40.00 722.00 515.28 80.00 re f Q
+BT /F2 7.80 Tf 0.650 0.720 1.000 rg 1 0 0 1 56.00 782.00 Tm (COMPLETE SYSTEM ARCHITECTURE, HOW IT WORKS & TECHNOLOGIES) Tj ET
+BT /F2 15.50 Tf 1.000 1.000 1.000 rg 1 0 0 1 56.00 760.00 Tm (Voice POS - Full System Guide & Antigravity Prompt) Tj ET
+BT /F1 9.00 Tf 0.820 0.870 0.950 rg 1 0 0 1 56.00 741.00 Tm (End-to-End Architecture: React 18 + FastAPI + SQLite + Local Ollama \(Qwen 2.5 3B\) + Firebase Firestore) Tj ET
+BT /F2 12.00 Tf 0.110 0.100 0.360 rg 1 0 0 1 40.00 693.00 Tm (1. Full System Architecture Overview) Tj ET
+q 1.10 w 0.780 0.820 0.890 RG 40.00 688.00 m 555.28 688.00 l S Q
+BT /F1 9.20 Tf 0.120 0.160 0.230 rg 1 0 0 1 40.00 670.80 Tm (Voice POS is a privacy-first, 100% local AI Voice-Controlled Point of Sale \(POS\), Inventory) Tj ET
+BT /F1 9.20 Tf 0.120 0.160 0.230 rg 1 0 0 1 40.00 658.00 Tm (Management, and Real-Time Operations web application built for small shops and SMEs in Sri) Tj ET
+BT /F1 9.20 Tf 0.120 0.160 0.230 rg 1 0 0 1 40.00 645.20 Tm (Lanka.) Tj ET
+q 0.970 0.980 1.000 rg 40.00 479.60 515.28 158.00 re f Q
+q 0.80 w 0.800 0.840 0.920 RG 40.00 479.60 515.28 158.00 re S Q
+q 0.930 0.950 1.000 rg 54.00 571.60 215.00 54.00 re f Q
+q 1.10 w 0.390 0.400 0.950 RG 54.00 571.60 215.00 54.00 re S Q
+BT /F2 8.60 Tf 0.080 0.110 0.240 rg 1 0 0 1 62.00 611.60 Tm (1. React 18 + Vite Frontend \(Port 5173\)) Tj ET
+BT /F1 7.70 Tf 0.180 0.230 0.320 rg 1 0 0 1 62.00 599.60 Tm (Tailwind UI, POS Cart, Admin Controls) Tj ET
+BT /F1 7.70 Tf 0.180 0.230 0.320 rg 1 0 0 1 62.00 589.10 Tm (Web Speech API + Live Mic Level Meter) Tj ET
+BT /F1 7.70 Tf 0.180 0.230 0.320 rg 1 0 0 1 62.00 578.60 Tm (useSystemStatus Hook \(Zero Refresh\)) Tj ET
+q 0.920 0.980 0.950 rg 326.28 571.60 215.00 54.00 re f Q
+q 1.10 w 0.100 0.650 0.450 RG 326.28 571.60 215.00 54.00 re S Q
+BT /F2 8.60 Tf 0.080 0.110 0.240 rg 1 0 0 1 334.28 611.60 Tm (2. Python 3.11 FastAPI Backend \(Port 8000\)) Tj ET
+BT /F1 7.70 Tf 0.180 0.230 0.320 rg 1 0 0 1 334.28 599.60 Tm (8 Routers \(28 Endpoints\) + JWT / RBAC) Tj ET
+BT /F1 7.70 Tf 0.180 0.230 0.320 rg 1 0 0 1 334.28 589.10 Tm (Independent HTTP 503 Maintenance Guard) Tj ET
+BT /F1 7.70 Tf 0.180 0.230 0.320 rg 1 0 0 1 334.28 578.60 Tm (SSE Stream \(/api/system/stream\)) Tj ET
+q 1.000 0.960 0.900 rg 54.00 491.60 215.00 54.00 re f Q
+q 1.10 w 0.920 0.550 0.120 RG 54.00 491.60 215.00 54.00 re S Q
+BT /F2 8.60 Tf 0.080 0.110 0.240 rg 1 0 0 1 62.00 531.60 Tm (3. Firebase Firestore \(Real-Time Cloud Sync\)) Tj ET
+BT /F1 7.70 Tf 0.180 0.230 0.320 rg 1 0 0 1 62.00 519.60 Tm (Document: system/status \(onSnapshot\)) Tj ET
+BT /F1 7.70 Tf 0.180 0.230 0.320 rg 1 0 0 1 62.00 509.10 Tm (Fields: maintenance, blocking, features) Tj ET
+BT /F1 7.70 Tf 0.180 0.230 0.320 rg 1 0 0 1 62.00 498.60 Tm (firestore.rules \(Admin-Only Writes\)) Tj ET
+q 0.950 0.930 1.000 rg 326.28 491.60 215.00 54.00 re f Q
+q 1.10 w 0.550 0.360 0.960 RG 326.28 491.60 215.00 54.00 re S Q
+BT /F2 8.60 Tf 0.080 0.110 0.240 rg 1 0 0 1 334.28 531.60 Tm (4. SQLite DB + Local Ollama \(Qwen 2.5 3B\)) Tj ET
+BT /F1 7.70 Tf 0.180 0.230 0.320 rg 1 0 0 1 334.28 519.60 Tm (SQLite pos.db \(7 Relational Tables\)) Tj ET
+BT /F1 7.70 Tf 0.180 0.230 0.320 rg 1 0 0 1 334.28 509.10 Tm (Ollama 127.0.0.1:11434 \(qwen2.5:3b\)) Tj ET
+BT /F1 7.70 Tf 0.180 0.230 0.320 rg 1 0 0 1 334.28 498.60 Tm (RTX 4050 GPU + Auto CPU Fallback) Tj ET
+q 1.30 w 0.250 0.300 0.850 RG 273.00 598.60 m 322.28 598.60 l S Q
+q 1.30 w 0.250 0.300 0.850 RG 322.28 598.60 m 317.28 601.80 l S Q
+q 1.30 w 0.250 0.300 0.850 RG 322.28 598.60 m 317.28 595.40 l S Q
+q 1.30 w 0.250 0.300 0.850 RG 273.00 598.60 m 278.00 601.80 l S Q
+q 1.30 w 0.250 0.300 0.850 RG 273.00 598.60 m 278.00 595.40 l S Q
+BT /F2 7.30 Tf 0.250 0.300 0.850 rg 1 0 0 1 282.00 603.60 Tm (REST + SSE) Tj ET
+q 1.30 w 0.850 0.450 0.080 RG 161.50 568.60 m 161.50 548.60 l S Q
+q 1.30 w 0.850 0.450 0.080 RG 161.50 548.60 m 158.30 553.60 l S Q
+q 1.30 w 0.850 0.450 0.080 RG 161.50 548.60 m 164.70 553.60 l S Q
+q 1.30 w 0.850 0.450 0.080 RG 161.50 568.60 m 158.30 563.60 l S Q
+q 1.30 w 0.850 0.450 0.080 RG 161.50 568.60 m 164.70 563.60 l S Q
+BT /F2 7.30 Tf 0.800 0.400 0.060 rg 1 0 0 1 167.50 555.60 Tm (onSnapshot\(\) Live Push) Tj ET
+q 1.30 w 0.450 0.250 0.850 RG 433.78 568.60 m 433.78 548.60 l S Q
+q 1.30 w 0.450 0.250 0.850 RG 433.78 548.60 m 430.58 553.60 l S Q
+q 1.30 w 0.450 0.250 0.850 RG 433.78 548.60 m 436.98 553.60 l S Q
+q 1.30 w 0.450 0.250 0.850 RG 433.78 568.60 m 430.58 563.60 l S Q
+q 1.30 w 0.450 0.250 0.850 RG 433.78 568.60 m 436.98 563.60 l S Q
+BT /F2 7.30 Tf 0.450 0.250 0.850 rg 1 0 0 1 439.78 555.60 Tm (ORM + Pydantic JSON) Tj ET
+BT /F2 12.00 Tf 0.110 0.100 0.360 rg 1 0 0 1 40.00 452.60 Tm (2. Complete Technology Stack Used Right Now) Tj ET
+q 1.10 w 0.780 0.820 0.890 RG 40.00 447.60 m 555.28 447.60 l S Q
+q 0.910 0.940 0.980 rg 40.00 418.60 515.28 21.00 re f Q
+q 0.80 w 0.750 0.800 0.870 RG 40.00 418.60 515.28 21.00 re S Q
+BT /F2 8.70 Tf 0.080 0.120 0.240 rg 1 0 0 1 46.00 425.60 Tm (Layer) Tj ET
+BT /F2 8.70 Tf 0.080 0.120 0.240 rg 1 0 0 1 156.00 425.60 Tm (Technologies & Versions) Tj ET
+BT /F2 8.70 Tf 0.080 0.120 0.240 rg 1 0 0 1 321.00 425.60 Tm (What It Does in Your System) Tj ET
+q 1.000 1.000 1.000 rg 40.00 367.40 515.28 51.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 367.40 515.28 51.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 407.00 Tm (Frontend UI) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 418.60 m 150.00 367.40 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 407.00 Tm (React 18.3, Vite 5.4, JSX,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 396.00 Tm (Tailwind CSS 3.4, React) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 385.00 Tm (Router v6, Lucide) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 418.60 m 315.00 367.40 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 407.00 Tm (Full-screen responsive English POS) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 396.00 Tm (interface: Dashboard, POS Cart, Products,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 385.00 Tm (Inventory, Sales, Reports, Voice Console,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 374.00 Tm (Settings & Admin Controls.) Tj ET
+q 0.980 0.990 1.000 rg 40.00 316.20 515.28 51.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 316.20 515.28 51.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 355.80 Tm (Speech & Audio) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 367.40 m 150.00 316.20 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 355.80 Tm (Browser Web Speech API + Web) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 344.80 Tm (Audio API) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 367.40 m 315.00 316.20 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 355.80 Tm (Continuous SpeechRecognition \(en-US & ta-) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 344.80 Tm (LK Tamil\), live 0-100% microphone input) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 333.80 Tm (meter, mic selector, and SpeechSynthesis) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 322.80 Tm (TTS audio replies.) Tj ET
+q 1.000 1.000 1.000 rg 40.00 265.00 515.28 51.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 265.00 515.28 51.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 304.60 Tm (Backend API) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 316.20 m 150.00 265.00 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 304.60 Tm (Python 3.11, FastAPI) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 293.60 Tm (>=0.115, Uvicorn >=0.32) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 316.20 m 315.00 265.00 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 304.60 Tm (28 REST & SSE endpoints across 8 routers) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 293.60 Tm (\(/api/auth, /config, /system, /products,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 282.60 Tm (/inventory, /sales, /voice, /reports\) +) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 271.60 Tm (/api/health.) Tj ET
+q 0.980 0.990 1.000 rg 40.00 213.80 515.28 51.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 213.80 515.28 51.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 253.40 Tm (Database & ORM) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 265.00 m 150.00 213.80 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 253.40 Tm (SQLite \(pos.db\), SQLAlchemy) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 242.40 Tm (>=2.0.35, Pydantic v2 >=2.9) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 265.00 m 315.00 213.80 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 253.40 Tm (7 relational tables with check) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 242.40 Tm (constraints, foreign keys, soft-deletes,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 231.40 Tm (immutable stock ledger, and strict) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 220.40 Tm (Pydantic validation.) Tj ET
+q 1.000 1.000 1.000 rg 40.00 173.60 515.28 40.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 173.60 515.28 40.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 202.20 Tm (Local AI Engine) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 213.80 m 150.00 173.60 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 202.20 Tm (Ollama \(127.0.0.1:11434\),) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 191.20 Tm (ollama SDK >=0.4.7,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 180.20 Tm (qwen2.5:3b) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 213.80 m 315.00 173.60 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 202.20 Tm (100% offline Tamil & English command) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 191.20 Tm (understanding via structured JSON Schema.) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 180.20 Tm (Zero external cloud LLM APIs or API keys.) Tj ET
+q 0.980 0.990 1.000 rg 40.00 122.40 515.28 51.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 122.40 515.28 51.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 162.00 Tm (Hardware Tuning) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 173.60 m 150.00 122.40 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 162.00 Tm (NVIDIA RTX 4050 \(6GB VRAM\),) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 151.00 Tm (16GB RAM, GPU/RAM telemetry) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 173.60 m 315.00 122.40 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 162.00 Tm (Quantized 1.9 GB model, compact) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 151.00 Tm (num_ctx=2048, single warm model) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 140.00 Tm (\(keep_alive=10m\), and automatic CPU) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 129.00 Tm (fallback \(num_gpu=0\).) Tj ET
+q 1.000 1.000 1.000 rg 40.00 71.20 515.28 51.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 71.20 515.28 51.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 110.80 Tm (Real-Time Ops) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 122.40 m 150.00 71.20 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 110.80 Tm (Firebase Web SDK ^13.2) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 99.80 Tm (\(Firestore onSnapshot\) +) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 88.80 Tm (FastAPI SSE) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 122.40 m 315.00 71.20 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 110.80 Tm (Monitors system/status via) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 99.80 Tm (useSystemStatus hook; switches) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 88.80 Tm (banner/full-screen lock & 5 feature flags) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 77.80 Tm (live without F5 refresh.) Tj ET
+BT /F1 8.00 Tf 0.45 0.50 0.58 rg 1 0 0 1 40.00 25.00 Tm (Voice POS - Full System Explanation, Architecture & Antigravity Prompt   |   Page 1 of 5) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 4 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R >> >> /Contents 5 0 R >>
+endobj
+7 0 obj
+<< /Length 10713 >>
+stream
+q 0.910 0.940 0.980 rg 40.00 781.00 515.28 21.00 re f Q
+q 0.80 w 0.750 0.800 0.870 RG 40.00 781.00 515.28 21.00 re S Q
+BT /F2 8.70 Tf 0.080 0.120 0.240 rg 1 0 0 1 46.00 788.00 Tm (Layer) Tj ET
+BT /F2 8.70 Tf 0.080 0.120 0.240 rg 1 0 0 1 156.00 788.00 Tm (Technologies & Versions) Tj ET
+BT /F2 8.70 Tf 0.080 0.120 0.240 rg 1 0 0 1 321.00 788.00 Tm (What It Does in Your System) Tj ET
+q 0.980 0.990 1.000 rg 40.00 729.80 515.28 51.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 729.80 515.28 51.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 769.40 Tm (Security & Auth) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 781.00 m 150.00 729.80 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 769.40 Tm (PyJWT >=2.9, bcrypt >=4.2,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 758.40 Tm (python-dotenv,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 747.40 Tm (firestore.rules) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 781.00 m 315.00 729.80 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 769.40 Tm (JWT Bearer auth, bcrypt password hashing,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 758.40 Tm (Owner/Admin vs Staff RBAC \(HTTP 403\),) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 747.40 Tm (HTTP 503 API guard, and message) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 736.40 Tm (sanitization.) Tj ET
+BT /F2 12.00 Tf 0.110 0.100 0.360 rg 1 0 0 1 40.00 706.80 Tm (3. How Every Workflow Works Step-by-Step) Tj ET
+q 1.10 w 0.780 0.820 0.890 RG 40.00 701.80 m 555.28 701.80 l S Q
+BT /F2 10.00 Tf 0.200 0.180 0.540 rg 1 0 0 1 40.00 681.80 Tm (A. Local AI Voice Command & Two-Step Confirmation Pipeline) Tj ET
+q 0.930 0.960 1.000 rg 40.00 624.80 118.32 52.00 re f Q
+q 1.00 w 0.300 0.450 0.900 RG 40.00 624.80 118.32 52.00 re S Q
+BT /F2 8.10 Tf 0.080 0.120 0.240 rg 1 0 0 1 47.00 658.80 Tm (Step 1: Speak / Type) Tj ET
+BT /F1 7.50 Tf 0.220 0.270 0.360 rg 1 0 0 1 47.00 642.80 Tm (Tamil \(ta-LK\) or English) Tj ET
+q 1.30 w 0.350 0.400 0.520 RG 160.32 650.80 m 170.32 650.80 l S Q
+q 1.30 w 0.350 0.400 0.520 RG 170.32 650.80 m 165.32 654.00 l S Q
+q 1.30 w 0.350 0.400 0.520 RG 170.32 650.80 m 165.32 647.60 l S Q
+q 0.950 0.930 1.000 rg 172.32 624.80 118.32 52.00 re f Q
+q 1.00 w 0.550 0.350 0.920 RG 172.32 624.80 118.32 52.00 re S Q
+BT /F2 8.10 Tf 0.080 0.120 0.240 rg 1 0 0 1 179.32 658.80 Tm (Step 2: Local Ollama) Tj ET
+BT /F1 7.50 Tf 0.220 0.270 0.360 rg 1 0 0 1 179.32 642.80 Tm (qwen2.5:3b JSON Intent) Tj ET
+q 1.30 w 0.350 0.400 0.520 RG 292.64 650.80 m 302.64 650.80 l S Q
+q 1.30 w 0.350 0.400 0.520 RG 302.64 650.80 m 297.64 654.00 l S Q
+q 1.30 w 0.350 0.400 0.520 RG 302.64 650.80 m 297.64 647.60 l S Q
+q 1.000 0.970 0.900 rg 304.64 624.80 118.32 52.00 re f Q
+q 1.00 w 0.880 0.550 0.120 RG 304.64 624.80 118.32 52.00 re S Q
+BT /F2 8.10 Tf 0.080 0.120 0.240 rg 1 0 0 1 311.64 658.80 Tm (Step 3: FastAPI Guard) Tj ET
+BT /F1 7.50 Tf 0.220 0.270 0.360 rg 1 0 0 1 311.64 642.80 Tm (Pydantic + SQLite Match) Tj ET
+q 1.30 w 0.350 0.400 0.520 RG 424.96 650.80 m 434.96 650.80 l S Q
+q 1.30 w 0.350 0.400 0.520 RG 434.96 650.80 m 429.96 654.00 l S Q
+q 1.30 w 0.350 0.400 0.520 RG 434.96 650.80 m 429.96 647.60 l S Q
+q 0.910 0.980 0.940 rg 436.96 624.80 118.32 52.00 re f Q
+q 1.00 w 0.120 0.650 0.420 RG 436.96 624.80 118.32 52.00 re S Q
+BT /F2 8.10 Tf 0.080 0.120 0.240 rg 1 0 0 1 443.96 658.80 Tm (Step 4: Safe Execute) Tj ET
+BT /F1 7.50 Tf 0.220 0.270 0.360 rg 1 0 0 1 443.96 642.80 Tm ([Confirm] -> Stock/Receipt) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 44.00 605.80 Tm (1. Voice / Text Capture: Shopkeeper speaks naturally in Tamil \(ta-LK\) or English \(en-US\) on) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 593.40 Tm (the Voice Assistant page while Web Audio API displays live mic volume \(0-100%\), or types a) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 581.00 Tm (command manually.) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 44.00 566.60 Tm (2. Local Qwen 2.5 3B Inference: FastAPI passes the active SQLite product catalog \(including) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 554.20 Tm (Sri Lankan Tamil aliases like Arisi, Seeni, Paal, Theneer\) and transcript to local Ollama) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 541.80 Tm (\(qwen2.5:3b\) enforcing AIStructuredIntent JSON output.) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 44.00 527.40 Tm (3. Pydantic Validation & SQLite Lookup: FastAPI validates the JSON with Pydantic and matches) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 515.00 Tm (the product against SQLite. AI never runs SQL directly. Read-only intents \(CHECK_STOCK,) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 502.60 Tm (CHECK_PRICE, CHECK_LOW_STOCK, GET_TODAY_SALES, SEARCH_PRODUCT\) answer immediately.) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 44.00 488.20 Tm (4. Mandatory [Confirm] / [Cancel] Execution: Stock/sale mutations \(ADD_STOCK, REDUCE_STOCK,) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 475.80 Tm (RECORD_SALE\) save a PENDING_CONFIRMATION row with a unique token. Only when the user clicks) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 463.40 Tm ([Confirm] does FastAPI re-verify live stock, update Product.stock_quantity, log) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 451.00 Tm (StockTransaction, and generate a receipt.) Tj ET
+BT /F2 10.00 Tf 0.200 0.180 0.540 rg 1 0 0 1 40.00 433.60 Tm (B. Manual POS Checkout, BIG_AMOUNT Guard & Stock Ledger) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 44.00 419.60 Tm (1. Cart & Validation: Cashiers search items by name, category, or barcode in LKR \(Rs.\).) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 407.20 Tm (Insufficient stock is blocked automatically, and bills exceeding BIG_AMOUNT \(Rs. 50,000\)) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 394.80 Tm (show a confirmation warning.) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 44.00 380.40 Tm (2. Atomic Checkout & Receipt: POST /api/sales atomically writes Sale \(INV-YYYYMMDD-XXXX\) +) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 368.00 Tm (SaleItem rows, deducts Product.stock_quantity, writes SALE rows to stock_transactions,) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 355.60 Tm (calculates cash change, and opens a printable thermal receipt.) Tj ET
+BT /F2 10.00 Tf 0.200 0.180 0.540 rg 1 0 0 1 40.00 338.20 Tm (C. Zero-Refresh Real-Time Maintenance Mode & Feature Flags) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 44.00 324.20 Tm (1. Dual Push Channels \(No Browser Refresh\): useSystemStatus subscribes simultaneously to) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 311.80 Tm (Firestore document system/status via onSnapshot\(\) AND FastAPI's Server-Sent Events stream) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 299.40 Tm (\(GET /api/system/stream\).) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 44.00 285.00 Tm (2. In-Memory Screen Swap & Independent HTTP 503 Guard: Enabling Banner Mode mounts) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 272.60 Tm (MaintenanceBanner; Blocking Mode swaps non-admin tabs to MaintenanceScreen in memory and) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 260.20 Tm (restores POS automatically when turned off. FastAPI's make_maintenance_guard independently) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 247.80 Tm (returns HTTP 503 for protected APIs while keeping /api/auth/* and /api/system/* open for) Tj ET
+BT /F1 9.00 Tf 0.100 0.140 0.220 rg 1 0 0 1 56.00 235.40 Tm (admins.) Tj ET
+BT /F2 12.00 Tf 0.110 0.100 0.360 rg 1 0 0 1 40.00 215.00 Tm (4. SQLite Database Schema \(7 Tables\) & API Routers) Tj ET
+q 1.10 w 0.780 0.820 0.890 RG 40.00 210.00 m 555.28 210.00 l S Q
+q 0.910 0.940 0.980 rg 40.00 181.00 515.28 21.00 re f Q
+q 0.80 w 0.750 0.800 0.870 RG 40.00 181.00 515.28 21.00 re S Q
+BT /F2 8.70 Tf 0.080 0.120 0.240 rg 1 0 0 1 46.00 188.00 Tm (SQLite Table) Tj ET
+BT /F2 8.70 Tf 0.080 0.120 0.240 rg 1 0 0 1 156.00 188.00 Tm (Key Columns) Tj ET
+BT /F2 8.70 Tf 0.080 0.120 0.240 rg 1 0 0 1 321.00 188.00 Tm (Purpose) Tj ET
+q 1.000 1.000 1.000 rg 40.00 151.80 515.28 29.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 151.80 515.28 29.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 169.40 Tm (users) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 181.00 m 150.00 151.80 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 169.40 Tm (id, username,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 158.40 Tm (hashed_password, role) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 181.00 m 315.00 151.80 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 169.40 Tm (Owner/admin and staff accounts with) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 158.40 Tm (bcrypt password hashes.) Tj ET
+q 0.980 0.990 1.000 rg 40.00 100.60 515.28 51.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 100.60 515.28 51.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 140.20 Tm (products) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 151.80 m 150.00 100.60 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 140.20 Tm (product_id, product_name,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 129.20 Tm (tamil_name, selling_price,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 118.20 Tm (stock_quantity,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 107.20 Tm (low_stock_limit) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 151.80 m 315.00 100.60 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 140.20 Tm (Shop catalog, LKR pricing, measurement) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 129.20 Tm (units, and low-stock limits.) Tj ET
+q 1.000 1.000 1.000 rg 40.00 60.40 515.28 40.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 60.40 515.28 40.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 89.00 Tm (sales) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 100.60 m 150.00 60.40 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 89.00 Tm (id, invoice_number, user_id,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 78.00 Tm (total_amount, cash_received,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 67.00 Tm (change_amount, source) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 100.60 m 315.00 60.40 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 89.00 Tm (Completed POS and VOICE sales invoices in) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 78.00 Tm (LKR.) Tj ET
+BT /F1 8.00 Tf 0.45 0.50 0.58 rg 1 0 0 1 40.00 25.00 Tm (Voice POS - Full System Explanation, Architecture & Antigravity Prompt   |   Page 2 of 5) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 4 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R >> >> /Contents 7 0 R >>
+endobj
+9 0 obj
+<< /Length 9950 >>
+stream
+q 0.910 0.940 0.980 rg 40.00 781.00 515.28 21.00 re f Q
+q 0.80 w 0.750 0.800 0.870 RG 40.00 781.00 515.28 21.00 re S Q
+BT /F2 8.70 Tf 0.080 0.120 0.240 rg 1 0 0 1 46.00 788.00 Tm (SQLite Table) Tj ET
+BT /F2 8.70 Tf 0.080 0.120 0.240 rg 1 0 0 1 156.00 788.00 Tm (Key Columns) Tj ET
+BT /F2 8.70 Tf 0.080 0.120 0.240 rg 1 0 0 1 321.00 788.00 Tm (Purpose) Tj ET
+q 0.980 0.990 1.000 rg 40.00 740.80 515.28 40.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 740.80 515.28 40.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 769.40 Tm (sale_items) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 781.00 m 150.00 740.80 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 769.40 Tm (id, sale_id, product_id,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 758.40 Tm (quantity, unit_price,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 747.40 Tm (subtotal) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 781.00 m 315.00 740.80 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 769.40 Tm (Line items belonging to each Sale) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 758.40 Tm (invoice.) Tj ET
+q 1.000 1.000 1.000 rg 40.00 700.60 515.28 40.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 700.60 515.28 40.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 729.20 Tm (stock_transactions) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 740.80 m 150.00 700.60 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 729.20 Tm (id, product_id,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 718.20 Tm (transaction_type, quantity,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 707.20 Tm (previous_stock, new_stock) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 740.80 m 315.00 700.60 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 729.20 Tm (Immutable audit ledger \(INITIAL, ADD,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 718.20 Tm (REDUCE, SALE, ADJUSTMENT\).) Tj ET
+q 0.980 0.990 1.000 rg 40.00 660.40 515.28 40.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 660.40 515.28 40.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 689.00 Tm (voice_commands) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 700.60 m 150.00 660.40 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 689.00 Tm (id, confirmation_token,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 678.00 Tm (transcript, intent, status,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 667.00 Tm (validated_payload) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 700.60 m 315.00 660.40 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 689.00 Tm (Voice AI history and pending confirmation) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 678.00 Tm (token store.) Tj ET
+q 1.000 1.000 1.000 rg 40.00 620.20 515.28 40.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 620.20 515.28 40.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 648.80 Tm (system_status) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 660.40 m 150.00 620.20 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 648.80 Tm (id=1, maintenance, blocking,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 637.80 Tm (message, estimated_time,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 626.80 Tm (features_json) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 660.40 m 315.00 620.20 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 648.80 Tm (Authoritative maintenance state and 5) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 637.80 Tm (JSON feature flags.) Tj ET
+BT /F2 10.00 Tf 0.200 0.180 0.540 rg 1 0 0 1 40.00 600.20 Tm (Frontend Pages & Backend FastAPI Routers \(28 Endpoints\)) Tj ET
+q 0.910 0.940 0.980 rg 40.00 574.20 515.28 21.00 re f Q
+q 0.80 w 0.750 0.800 0.870 RG 40.00 574.20 515.28 21.00 re S Q
+BT /F2 8.70 Tf 0.080 0.120 0.240 rg 1 0 0 1 46.00 581.20 Tm (Frontend Route / Page) Tj ET
+BT /F2 8.70 Tf 0.080 0.120 0.240 rg 1 0 0 1 156.00 581.20 Tm (FastAPI Router) Tj ET
+BT /F2 8.70 Tf 0.080 0.120 0.240 rg 1 0 0 1 321.00 581.20 Tm (Key Responsibilities & Guards) Tj ET
+q 1.000 1.000 1.000 rg 40.00 545.00 515.28 29.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 545.00 515.28 29.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 562.60 Tm (/login) Tj ET
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 551.60 Tm (\(LoginPage.jsx\)) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 574.20 m 150.00 545.00 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 562.60 Tm (/api/auth) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 574.20 m 315.00 545.00 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 562.60 Tm (POST /register, /login, /logout, GET /me.) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 551.60 Tm (Open during maintenance for Admin login.) Tj ET
+q 0.980 0.990 1.000 rg 40.00 504.80 515.28 40.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 504.80 515.28 40.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 533.40 Tm (/) Tj ET
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 522.40 Tm (\(DashboardPage.jsx\)) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 545.00 m 150.00 504.80 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 533.40 Tm (/api/reports) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 545.00 m 315.00 504.80 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 533.40 Tm (GET /dashboard live KPIs, low-stock) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 522.40 Tm (alerts, recent sales & quick product) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 511.40 Tm (lookup.) Tj ET
+q 1.000 1.000 1.000 rg 40.00 475.60 515.28 29.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 475.60 515.28 29.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 493.20 Tm (/pos \(PosPage.jsx\)) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 504.80 m 150.00 475.60 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 493.20 Tm (/api/sales) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 504.80 m 315.00 475.60 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 493.20 Tm (POST /sales atomic checkout, BIG_AMOUNT) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 482.20 Tm (alert, cash change & thermal receipt.) Tj ET
+q 0.980 0.990 1.000 rg 40.00 446.40 515.28 29.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 446.40 515.28 29.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 464.00 Tm (/products) Tj ET
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 453.00 Tm (\(ProductsPage.jsx\)) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 475.60 m 150.00 446.40 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 464.00 Tm (/api/products) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 475.60 m 315.00 446.40 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 464.00 Tm (Full CRUD for shop products, categories,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 453.00 Tm (barcodes, units & low-stock limits.) Tj ET
+q 1.000 1.000 1.000 rg 40.00 417.20 515.28 29.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 417.20 515.28 29.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 434.80 Tm (/inventory) Tj ET
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 423.80 Tm (\(InventoryPage.jsx\)) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 446.40 m 150.00 417.20 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 434.80 Tm (/api/inventory) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 446.40 m 315.00 417.20 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 434.80 Tm (GET /low-stock, POST /adjust stock) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 423.80 Tm (additions/reductions, GET /transactions.) Tj ET
+q 0.980 0.990 1.000 rg 40.00 388.00 515.28 29.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 388.00 515.28 29.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 405.60 Tm (/voice \(VoiceAssist) Tj ET
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 394.60 Tm (antPage.jsx\)) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 417.20 m 150.00 388.00 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 405.60 Tm (/api/voice) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 417.20 m 315.00 388.00 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 405.60 Tm (POST /process \(local Qwen 2.5 3B\), POST) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 394.60 Tm (/confirm, POST /cancel, GET /history.) Tj ET
+q 1.000 1.000 1.000 rg 40.00 358.80 515.28 29.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 358.80 515.28 29.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 376.40 Tm (/settings) Tj ET
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 365.40 Tm (\(SettingsPage.jsx\)) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 388.00 m 150.00 358.80 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 376.40 Tm (/api/config) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 388.00 m 315.00 358.80 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 376.40 Tm (GET /config public currency/language,) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 365.40 Tm (local Ollama health & RTX GPU/RAM status.) Tj ET
+q 0.980 0.990 1.000 rg 40.00 329.60 515.28 29.20 re f Q
+q 0.80 w 0.800 0.840 0.900 RG 40.00 329.60 515.28 29.20 re S Q
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 347.20 Tm (/admin \(AdminContro) Tj ET
+BT /F2 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 46.00 336.20 Tm (lPage.jsx\)) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 150.00 358.80 m 150.00 329.60 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 156.00 347.20 Tm (/api/system) Tj ET
+q 0.60 w 0.800 0.840 0.900 RG 315.00 358.80 m 315.00 329.60 l S Q
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 347.20 Tm (GET /status, PUT /status \(Admin RBAC\),) Tj ET
+BT /F1 8.30 Tf 0.100 0.140 0.220 rg 1 0 0 1 321.00 336.20 Tm (GET /stream \(SSE\) & HTTP 503 guards.) Tj ET
+BT /F1 8.00 Tf 0.45 0.50 0.58 rg 1 0 0 1 40.00 25.00 Tm (Voice POS - Full System Explanation, Architecture & Antigravity Prompt   |   Page 3 of 5) Tj ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 4 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R >> >> /Contents 9 0 R >>
+endobj
+11 0 obj
+<< /Length 7528 >>
+stream
+BT /F2 12.00 Tf 0.110 0.100 0.360 rg 1 0 0 1 40.00 787.00 Tm (5. Copy-Ready Master Prompt for Google Antigravity) Tj ET
+q 1.10 w 0.780 0.820 0.890 RG 40.00 782.00 m 555.28 782.00 l S Q
+BT /F1 9.20 Tf 0.120 0.160 0.230 rg 1 0 0 1 40.00 764.80 Tm (Copy and paste the prompt below directly into Antigravity to explain, extend, or recreate this) Tj ET
+BT /F1 9.20 Tf 0.120 0.160 0.230 rg 1 0 0 1 40.00 752.00 Tm (system:) Tj ET
+q 0.060 0.090 0.170 rg 40.00 63.40 515.28 681.00 re f Q
+q 0.80 w 0.220 0.280 0.400 RG 40.00 63.40 515.28 681.00 re S Q
+BT /F3 8.10 Tf 0.650 0.740 1.000 rg 1 0 0 1 50.00 730.90 Tm (# ANTIGRAVITY PROJECT PROMPT - VOICE POS \(LOCAL OLLAMA + FIREBASE REAL-TIME OPS\)) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 719.80 Tm () Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 708.70 Tm (Build or extend "Voice POS", a complete, production-ready AI Voice-Controlled Point of) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 697.60 Tm (  Sale \(POS\) and Inventory Management web application designed for small shops and SMEs) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 686.50 Tm (  in Sri Lanka.) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 675.40 Tm () Tj ET
+BT /F3 8.10 Tf 0.650 0.740 1.000 rg 1 0 0 1 50.00 664.30 Tm (## 1. EXACT TECHNOLOGY STACK CURRENTLY USED) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 653.20 Tm () Tj ET
+BT /F3 8.10 Tf 0.650 0.740 1.000 rg 1 0 0 1 50.00 642.10 Tm (### Backend \(Python 3.11 + FastAPI\)) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 631.00 Tm (- Python 3.11, FastAPI \(>=0.115.0\), Uvicorn \(>=0.32.0\)) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 619.90 Tm (- SQLite database \(pos.db\) + SQLAlchemy 2.0 ORM \(>=2.0.35\)) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 608.80 Tm (- Pydantic v2 \(>=2.9.0\) for strict request/response & AI JSON validation) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 597.70 Tm (- Authentication & Security: PyJWT \(>=2.9.0\) Bearer tokens + bcrypt \(>=4.2.0\) password) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 586.60 Tm (  hashing) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 575.50 Tm (- Environment Configuration: python-dotenv \(>=1.0.1\) validated at startup) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 564.40 Tm (- Testing & HTTP Client: pytest \(>=8.3.0\), httpx \(>=0.27.0\)) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 553.30 Tm () Tj ET
+BT /F3 8.10 Tf 0.650 0.740 1.000 rg 1 0 0 1 50.00 542.20 Tm (### Local AI Engine \(Mandatory - 100% Local Inference\)) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 531.10 Tm (- Runtime: Ollama running locally at http://127.0.0.1:11434) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 520.00 Tm (- SDK: Official ollama Python library \(>=0.4.7\)) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 508.90 Tm (- Model: Qwen 2.5 3B \(qwen2.5:3b\) - quantized ~1.9 GB local model) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 497.80 Tm (- Hardware Optimization: Tuned for NVIDIA RTX 4050 \(6GB VRAM\) + 16GB RAM \(num_ctx=2048,) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 486.70 Tm (  num_predict=256, keep_alive="10m", live GPU/RAM telemetry, automatic CPU fallback) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 475.60 Tm (  num_gpu=0\)) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 464.50 Tm (- Strict Constraint: NEVER use Gemini, OpenAI, Claude, or any external cloud LLM API. AI) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 453.40 Tm (  never executes SQL directly; it only outputs structured JSON intents validated against) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 442.30 Tm (  SQLite records.) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 431.20 Tm () Tj ET
+BT /F3 8.10 Tf 0.650 0.740 1.000 rg 1 0 0 1 50.00 420.10 Tm (### Frontend \(React 18 + Vite + Tailwind CSS\)) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 409.00 Tm (- React 18.3.1, Vite 5.4, JavaScript \(JSX / ES Modules\)) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 397.90 Tm (- Tailwind CSS 3.4 \(PostCSS + Autoprefixer\), Lucide React icons \(0.460.0\)) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 386.80 Tm (- React Router v6 \(6.28.0\) + centralized Fetch API client) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 375.70 Tm (- Browser Web Speech API \(continuous SpeechRecognition for en-US & ta-LK +) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 364.60 Tm (  SpeechSynthesis TTS\)) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 353.50 Tm (- Web Audio API live 0-100% microphone input level meter & input device selector) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 342.40 Tm () Tj ET
+BT /F3 8.10 Tf 0.650 0.740 1.000 rg 1 0 0 1 50.00 331.30 Tm (### Real-Time Maintenance Mode & Feature Flags) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 320.20 Tm (- Firebase Web SDK \(^13.2.0\): Firestore document "system/status" monitored in real time) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 309.10 Tm (  via onSnapshot\(\) inside the reusable useSystemStatus React hook.) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 298.00 Tm (- Firestore Security Rules \(firestore.rules\): Public client read on system/status; writes) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 286.90 Tm (  restricted strictly to authenticated admins. Zero Firebase Admin/private keys in) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 275.80 Tm (  frontend.) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 264.70 Tm (- Backend Zero-Refresh Stream & Enforcement: FastAPI Server-Sent Events) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 253.60 Tm (  \(/api/system/stream\) + independent make_maintenance_guard returning HTTP 503 Service) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 242.50 Tm (  Unavailable \(MAINTENANCE_MODE / FEATURE_DISABLED\) while keeping /api/auth/* and) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 231.40 Tm (  /api/system/* accessible to administrators.) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 220.30 Tm () Tj ET
+BT /F3 8.10 Tf 0.650 0.740 1.000 rg 1 0 0 1 50.00 209.20 Tm (## 2. ENVIRONMENT VARIABLES) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 198.10 Tm () Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 187.00 Tm (backend/.env:) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 175.90 Tm (AI_PROVIDER=ollama) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 164.80 Tm (OLLAMA_BASE_URL=http://127.0.0.1:11434) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 153.70 Tm (OLLAMA_MODEL=qwen2.5:3b) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 142.60 Tm (OLLAMA_TIMEOUT=60) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 131.50 Tm (CURRENCY=LKR) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 120.40 Tm (LANGUAGE=en-US) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 109.30 Tm (LOW_STOCK_DEFAULT=5) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 98.20 Tm (BIG_AMOUNT=50000) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 87.10 Tm () Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 76.00 Tm (frontend/.env:) Tj ET
+BT /F1 8.00 Tf 0.45 0.50 0.58 rg 1 0 0 1 40.00 25.00 Tm (Voice POS - Full System Explanation, Architecture & Antigravity Prompt   |   Page 4 of 5) Tj ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 4 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R >> >> /Contents 11 0 R >>
+endobj
+13 0 obj
+<< /Length 3451 >>
+stream
+q 0.060 0.090 0.170 rg 40.00 520.60 515.28 281.40 re f Q
+q 0.80 w 0.220 0.280 0.400 RG 40.00 520.60 515.28 281.40 re S Q
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 788.50 Tm (VITE_FIREBASE_API_KEY=your_firebase_web_api_key) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 777.40 Tm (VITE_FIREBASE_AUTH_DOMAIN=your-project-id.firebaseapp.com) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 766.30 Tm (VITE_FIREBASE_PROJECT_ID=your-project-id) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 755.20 Tm (VITE_FIREBASE_STORAGE_BUCKET=your-project-id.appspot.com) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 744.10 Tm (VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 733.00 Tm (VITE_FIREBASE_APP_ID=your_firebase_web_app_id) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 721.90 Tm () Tj ET
+BT /F3 8.10 Tf 0.650 0.740 1.000 rg 1 0 0 1 50.00 710.80 Tm (## 3. CORE APPLICATION MODULES & RULES) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 699.70 Tm (1. Full-Screen English UI: Non-overlapping collapsible desktop sidebar, top bar with) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 688.60 Tm (  Fullscreen toggle & TTS mute, mobile drawer/bottom tabs. Pages: Dashboard, POS /) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 677.50 Tm (  Billing, Products, Inventory, Sales History, Reports, Voice Assistant \(full-width) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 666.40 Tm (  console without Quick Sample Voice Commands panel\), Settings, and admin-only Admin) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 655.30 Tm (  Controls \(/admin\).) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 644.20 Tm (2. POS & Billing \(LKR / Rs.\): Product search, cart controls, stock validation, BIG_AMOUNT) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 633.10 Tm (  \(> Rs. 50,000\) warning, cash change calculation, stock deduction ledger, and printable) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 622.00 Tm (  thermal receipts.) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 610.90 Tm (3. Safe Voice AI Pipeline: Supports Tamil & English commands \(CHECK_STOCK, ADD_STOCK,) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 599.80 Tm (  REDUCE_STOCK, RECORD_SALE, CHECK_PRICE, CHECK_LOW_STOCK, GET_TODAY_SALES,) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 588.70 Tm (  SEARCH_PRODUCT\). Requires explicit [Confirm] / [Cancel] approval before mutating) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 577.60 Tm (  inventory or recording sales. Manual POS works 100% offline even if Ollama is stopped.) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 566.50 Tm (4. Real-Time Admin Control Panel \(/admin\): Toggle maintenance on/off, switch Banner-Only) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 555.40 Tm (  vs Full-Screen Blocking without page refresh, sanitize public messages/duration, and) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 544.30 Tm (  toggle 5 feature flags \(posBilling, voiceAssistant, productManagement,) Tj ET
+BT /F3 8.10 Tf 0.930 0.950 0.980 rg 1 0 0 1 50.00 533.20 Tm (  inventoryAdjustments, reportsAnalytics\).) Tj ET
+BT /F1 8.00 Tf 0.45 0.50 0.58 rg 1 0 0 1 40.00 25.00 Tm (Voice POS - Full System Explanation, Architecture & Antigravity Prompt   |   Page 5 of 5) Tj ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 4 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R >> >> /Contents 13 0 R >>
+endobj
+15 0 obj
+<< /Type /Catalog /Pages 4 0 R >>
+endobj
+xref
+0 16
+0000000000 65535 f 
+0000000015 00000 n 
+0000000112 00000 n 
+0000000214 00000 n 
+0000000309 00000 n 
+0000000393 00000 n 
+0000012459 00000 n 
+0000012611 00000 n 
+0000023377 00000 n 
+0000023529 00000 n 
+0000033531 00000 n 
+0000033684 00000 n 
+0000041265 00000 n 
+0000041419 00000 n 
+0000044923 00000 n 
+0000045077 00000 n 
+trailer
+<< /Size 16 /Root 15 0 R >>
+startxref
+45127
+%%EOF
